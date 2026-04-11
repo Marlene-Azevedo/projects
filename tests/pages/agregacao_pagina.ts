@@ -5,7 +5,6 @@ export class AggregationPage {
   readonly syncButton: Locator;
   readonly statusMessage: Locator;
   
-
   constructor(page: Page) {
     this.page = page;
     // Uso de data-testid para estabilidade (Best Practices) 

@@ -54,4 +54,6 @@ Utilização estratégica de **Tags** para controlo de execução:
 ---
 
 ## 🏁 5. Conclusão
-1.  **Modular
+1.  **Modularidade:** Código fácil de manter e expandir.
+2.  **Qualidade:** Cobertura de Happy Path, Unhappy Path e Edge Cases.
+3.  **Valor de Negócio:** Testes que qualquer membro da equipa nBanks consegue compreender.

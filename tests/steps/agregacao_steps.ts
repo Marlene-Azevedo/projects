@@ -6,7 +6,6 @@ let loginPage: LoginPage;
 let aggregationPage: AggregationPage;
 
 Before(async function () {
-  // Inicializamos ambas as páginas usando a mesma 'this.page'
   loginPage = new LoginPage(this.page);
   aggregationPage = new AggregationPage(this.page);
 });
@@ -20,9 +19,10 @@ Given('que o utilizador está na página de gestão financeira', async function 
 });
 
 When('solicita a sincronização com a entidade {string}', async function (entidade: string) {
-    await aggregationPage.triggerSync();
+  // O parâmetro {string} captura o valor da coluna <entidade> do Scenario Outline
+  await aggregationPage.triggerSync();
 });
 
 Then('os dados devem ser atualizados em menos de 5 segundos', async function () {
-    await aggregationPage.validateSyncLatency();
+  await aggregationPage.validateSyncLatency();
 });

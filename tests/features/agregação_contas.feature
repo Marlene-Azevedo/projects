@@ -1,7 +1,6 @@
 # User Story: US-001 - Agregação de Contas Bancárias
 # Critério de Aceitação: Latência de sincronização inferior a 5 segundos
 @critical @regression
-
 Feature: Agregação de Contas Bancárias
 
   Background: Autenticação do Utilizador

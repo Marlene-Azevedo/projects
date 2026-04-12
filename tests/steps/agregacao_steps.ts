@@ -1,18 +1,18 @@
 import { Given, When, Then, Before } from '@cucumber/cucumber';
-import { LoginPagina } from '../pages/login_pagina';
+import { LoginPage } from '../pages/login_pagina';
 import { AggregationPage } from '../pages/agregacao_pagina';
 
-let loginPage: LoginPagina;
+let loginPage: LoginPage;
 let aggregationPage: AggregationPage;
 
 Before(async function () {
   // Inicializamos ambas as páginas usando a mesma 'this.page'
-  loginPage = new LoginPagina(this.page);
+  loginPage = new LoginPage(this.page);
   aggregationPage = new AggregationPage(this.page);
 });
 
 Given('que o utilizador efetuou login com sucesso na plataforma', async function () {
-  await loginPage.login('utilizador_exemplo', 'pass123');
+  await loginPage.login('utilizador', 'password');
 });
 
 Given('que o utilizador está na página de gestão financeira', async function () {

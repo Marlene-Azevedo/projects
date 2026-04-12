@@ -1,6 +1,6 @@
 import { Page, Locator } from '@playwright/test';
 
-export class LoginPagina {
+export class LoginPage {
   readonly page: Page;
   readonly usernameInput: Locator;
   readonly passwordInput: Locator;
@@ -13,8 +13,12 @@ export class LoginPagina {
     this.loginButton = page.locator('[data-testid="btn-login"]');
   }
 
-  async login(user: string, pass: string) {
+  async goToLoginPage(){
     await this.page.goto('https://nbanks.com/login');
+  }
+
+  async login(user: string, pass: string) {
+    this.goToLoginPage();
     await this.usernameInput.fill(user);
     await this.passwordInput.fill(pass);
     await this.loginButton.click();

@@ -1,0 +1,40 @@
+name: Playwright Cucumber CI
+on:
+  push:
+    branches: master
+  pull_request:
+    branches: master
+
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
+        cache: 'npm' # Otimiza o tempo de instalação
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps
+
+    - name: Run Cucumber Tests
+      # Aqui corremos todos os testes. 
+      # Se quiser correr apenas os critical, uso: npx cucumber-js --tags "@critical"
+      run: npx cucumber-js
+
+    - name: Upload Cucumber Report
+      uses: actions/upload-artifact@v4
+      if: ${{ !cancelled() }} # Garante que o relatório é enviado mesmo que o teste falhe
+      with:
+        name: cucumber-report
+        path: reports/ # Caminho definido para report
+        retention-days: 30

@@ -19,7 +19,8 @@ export class AggregationPage {
   async triggerSync() {
     await this.syncButton.click();
   }
-
+    // Referente ao AC 1.2 da US-001: Garantir que a resposta do sistema 
+    // não ultrapassa o limite de 5s para sincronização em tempo real.
   async validateSyncLatency() {
     const startTime = Date.now(); //Data inicio
     await this.statusMessage.waitFor({ state: 'visible', timeout: 5000 });

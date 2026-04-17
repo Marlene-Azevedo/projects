@@ -8,9 +8,11 @@ export class LoginPage {
 
   constructor(page: Page) {
     this.page = page;
+    // Manual
     this.usernameInput = page.locator('[data-testid="username"]');
     this.passwordInput = page.locator('[data-testid="password"]');
-    this.loginButton = page.locator('[data-testid="btn-login"]');
+    //Com recurso ao Codegen
+    this.loginButton = page.getByRole('button', { name: 'login' });
   }
 
   async goToLoginPage(){

@@ -1,10 +1,10 @@
 import { Given, When, Then } from '@cucumber/cucumber';
 import { LoginPage } from '../pages/login_pagina';
-import { SearchPage } from '../pages/pesquisa_pagina'; // Nova página no POM
+import { SearchPage } from '../pages/pesquisa_pagina';
 
 let searchPage: SearchPage;
 
-// Nota: O Before já inicializa as páginas no teu ficheiro global de steps
+
 
 When('aplica os filtros de {string}, {string} e {string}', async function (categoria: string, taxa: string, comissao: string) {
   searchPage = new SearchPage(this.page);
@@ -20,7 +20,7 @@ Then('os resultados devem aparecer em menos de 2 segundos', async function () {
   await searchPage.resultsContainer.waitFor({ state: 'visible' });
   
   const duration = (Date.now() - startTime) / 1000;
-  // O Playwright expect é usado para validar o KPI de 2 segundos
+ 
   if (duration > 2) {
     throw new Error(`A pesquisa demorou ${duration}s, excedendo o limite de 2s.`);
   }

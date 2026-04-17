@@ -11,7 +11,6 @@ export class SearchPage {
 
   constructor(page: Page) {
     this.page = page;
-    // Seletores baseados em boas práticas (IDs ou Data-TestIDs)
     this.searchInput = page.locator('[data-testid="search-input"]');
     this.categoryDropdown = page.locator('select#category-filter');
     this.resultsContainer = page.locator('.results-grid');
@@ -30,10 +29,7 @@ export class SearchPage {
    * @param filters Objeto com os critérios de filtragem
    */
   async applyFilters(filters: { categoria: string, taxa: string, comissao: string }) {
-    // Seleciona a categoria no dropdown
     await this.categoryDropdown.selectOption({ label: filters.categoria });
-    
-    // Filtros dinâmicos baseados no texto (ex: Taxa de Juro)
     await this.page.getByText(filters.taxa).click();
     await this.page.getByText(filters.comissao).click();
     
@@ -48,12 +44,9 @@ export class SearchPage {
    * Valida se os resultados visíveis condizem com os filtros (AC 1)
    */
   async validateResultsMatchFilters() {
-    // Garante que pelo menos um produto aparece
     await expect(this.productCards.first()).toBeVisible();
     
-    // Exemplo: Validar se o texto de um card contém a categoria esperada
     const firstCardText = await this.productCards.first().innerText();
-    // Esta lógica pode ser expandida conforme a UI real
     return firstCardText;
   }
 

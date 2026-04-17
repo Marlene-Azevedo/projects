@@ -7,7 +7,6 @@ export class AggregationPage {
   
   constructor(page: Page) {
     this.page = page;
-    // Uso de data-testid para estabilidade (Best Practices) 
     this.syncButton = page.locator('[data-testid="btn-sync-accounts"]');
     this.statusMessage = page.locator('.sync-status-indicator');
   }

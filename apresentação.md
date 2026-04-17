@@ -1,6 +1,6 @@
 # 🚀 Apresentação: Estrutura de Automação nBanks
 **Candidato:** QA Automation Engineer  
-**Stack Tecnológica:** Playwright + Cucumber (BDD) + TypeScript  
+**Stack Tecnológica:** Playwright + Cucumber (BDD) + Gherkin  
 **Duração Estimada:** 30 Minutos
 
 ---
